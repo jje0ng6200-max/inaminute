@@ -1,12 +1,199 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <title>IN A MINUTE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+      color: #111;
+      background: #ffffff;
+    }
+
+    .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      border-bottom: 1px solid #eee;
+      background: #ffffffaa;
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .logo {
+      height: 32px;
+    }
+
+    nav a {
+      margin-left: 24px;
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .hero {
+      padding: 80px 0;
+      background: #f5f7ff;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 36px;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .hero p {
+      font-size: 16px;
+      margin-bottom: 24px;
+      color: #555;
+    }
+
+    .btn-main {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 999px;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .section {
+      padding: 60px 0;
+    }
+
+    .section h2 {
+      font-size: 28px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      flex: 1 1 260px;
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #eee;
+      background: #fff;
+    }
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid #eee;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 60px 16px;
+      }
+      .hero h1 {
+        font-size: 28px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h1> Hello! 테스트중이다</h1>
-    <p>VS Code를 이용한 첫 HTML 성공핑</code></p>
+
+  <!-- 헤더 -->
+  <header>
+    <div class="inner header-inner">
+      <!-- 로고 이미지 경로만 네가 저장한 파일 이름으로 변경 -->
+      <img src="images/logo.png" alt="IN A MINUTE 로고" class="logo">
+
+      <nav>
+        <a href="#about">About</a>
+        <a href="#music">Music</a>
+        <a href="#schedule">Schedule</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 히어로 섹션 -->
+  <main>
+    <section class="hero">
+      <div class="inner">
+        <h1>IN A MINUTE Official Website</h1>
+        <p>XD로 디자인한 레이아웃을 실제 웹으로 옮기는 첫 페이지입니다.</p>
+        <a href="#music" class="btn-main">음악 듣기</a>
+      </div>
+    </section>
+
+    <!-- 섹션 예시 1 -->
+    <section class="section" id="about">
+      <div class="inner">
+        <h2>About</h2>
+        <div class="cards">
+          <div class="card">
+            <h3>멤버 소개</h3>
+            <p>여기에 멤버 소개 텍스트를 넣으면 돼. XD에서 만든 텍스트 복붙 가능.</p>
+          </div>
+          <div class="card">
+            <h3>컨셉</h3>
+            <p>앨범/프로젝트 컨셉 설명 영역. 필요 없으면 이 카드 통째로 지워도 돼.</p>
+          </div>
+          <div class="card">
+            <h3>스토리</h3>
+            <p>그룹의 스토리나 브랜드 스토리를 간단히 적는 영역.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 섹션 예시 2 -->
+    <section class="section" id="music">
+      <div class="inner">
+        <h2>Music</h2>
+        <p style="text-align:center; color:#555; margin-top:8px;">
+          여기에는 Spotify / YouTube 링크, 앨범 커버 이미지 등을 배치할 수 있어.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 푸터 -->
+  <footer>
+    <div class="inner">
+      © 2025 IN A MINUTE / DIPBLU. All rights reserved.
+    </div>
+  </footer>
+
 </body>
 </html>
