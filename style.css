@@ -33,6 +33,12 @@ body {
   margin: 0 auto;
 }
 
+@media (max-width: 750px){
+  body{
+    height: calc(100vh / (100vw / 750));
+  }
+}
+
 /* 모든 섹션의 기본 틀 */
 .sec {
   position: relative;   /* absolute 기준점 */
