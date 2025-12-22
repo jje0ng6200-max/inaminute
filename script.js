@@ -80,3 +80,31 @@ function initMaskedSlider(dotsWrap) {
 window.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".frame-dots[data-target]").forEach(initMaskedSlider);
 });
+
+(function () {
+  const BASE = 750;
+  const stage = document.getElementById("stage");
+  const spacer = document.getElementById("spacer");
+  if (!stage || !spacer) return;
+
+  function fit() {
+    const vw = Math.min(window.innerWidth, document.documentElement.clientWidth);
+    const scale = vw / BASE;
+
+    stage.style.transform = `scale(${scale})`;
+
+    // 원본(스케일 전) 높이 * scale 만큼 문서 높이를 만들어 스크롤 가능하게
+    const rawHeight = stage.scrollHeight;
+    spacer.style.height = `${rawHeight * scale}px`;
+  }
+
+  // 이미지 로드로 높이가 바뀌는 걸 잡기 위해 두 번+지연 한 번
+  window.addEventListener("load", () => {
+    fit();
+    requestAnimationFrame(fit);
+    setTimeout(fit, 300);
+  });
+
+  window.addEventListener("resize", fit);
+  window.addEventListener("orientationchange", fit);
+})();

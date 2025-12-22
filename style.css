@@ -22,29 +22,57 @@ body {
                "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+#stage{
+  width: 750px;
+  transform-origin: top left;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#spacer{
+  width: 1px;
+  height: 0;
+}
+
 
 /* =========================
    2. Layout (전체 구조)
 ========================= */
 
 /* 전체 페이지 폭: XD 기준 750px */
-.page {
+/* 기준 레이아웃 */
+.page{ width:750px; }
+
+.sec{
+  position: relative;
   width: 750px;
-  margin: 0 auto;
 }
 
-@media (max-width: 750px){
-  body{
-    height: calc(100vh / (100vw / 750));
-  }
+/* HERO는 이거 하나만 */
+.hero{
+  position: relative;
+  width: 750px;
+  height: 980px;
+  overflow: visible;
 }
 
-/* 모든 섹션의 기본 틀 */
-.sec {
-  position: relative;   /* absolute 기준점 */
+/* STRIPES는 우선 offset 0으로 */
+.stripes{
+  position: relative;
   width: 750px;
-  overflow: hidden;
+  min-height: 1650px;
+  overflow: visible;
+  --people-up: -40px;
 }
+
+.stripes .bg { z-index: 0; }
+.stripes .slot { z-index: 1; }
+.stripes .mask-wrap { z-index: 5; }      /* 사진/프레임 최상단 */
+.stripes .frame-dots { z-index: 6; }
+.stripes .obj { z-index: 7; }            /* 소품은 제일 위 */
+
+
 
 
 /* =========================
@@ -69,7 +97,7 @@ body {
 /* 이미지, 스티커, 장식용 */
 .obj {
   position: absolute;
-  z-index: 2;
+  z-index: 3;
   display: block;
 }
 
@@ -96,8 +124,6 @@ body {
    (XD 구간별 높이로 수정)
 ========================= */
 
-.hero      { min-height: 960px; }
-.stripes   { min-height: 1100px; }
 .collage   { min-height: 1050px; }
 .guestbook { min-height: 980px; }
 .extras    { min-height: 820px; }
@@ -113,12 +139,6 @@ body {
 여기서부터 
 ========================= */
 
-/* 타이틀 */
-  .hero {
-  position: relative;   /* 기준점 */
-  overflow: visible;    /* 오브제 잘림 방지 */
-  height: 980px;        /* ✅ 중요: 공백 줄이기 (필요하면 조절) */
-}
 
 .hero-title {
   position: absolute;
@@ -128,13 +148,6 @@ body {
   height: 440.77px;   /* XD H */
 }
 
-.hero{
-  position: relative;
-  height: 980px;
-  overflow: visible;
-}
-
-.sec { position: relative; width: 750px; }
 
 /* 시즌 그리팅 버튼 */
 .season-btn {
@@ -161,11 +174,7 @@ body {
   display: block;
 }
 /* SLOT 1 */
-.hero {
-  position: relative;   /* 기준점 */
- overflow: visible;
 
-}
 
 .slot-main {
   position: absolute;
@@ -188,11 +197,6 @@ body {
    NAME OBJECTS
 ========================= */
 
-.obj {
-  position: absolute;
-  z-index: 3;       /* 슬롯 위로 */
-  display: block;
-}
 
 /* JAEJUN */
 .obj-jaejun {
@@ -221,33 +225,29 @@ body {
 .obj-down{
   position: absolute;   /* obj 공통이 있어도 안전하게 */
   left: 354px;          /* XD X */
-  top: 914px;           /* XD Y */
-  width: 43px;          /* XD W */
-  height: 93px;         /* XD H */
+  top: 880px;           /* XD Y */
+  width: 39px;          /* XD W */
+  height: 80px;         /* XD H */
   z-index: 3;           /* 슬롯 위 */
   display: block;
 }
 
-.stripes {
-  min-height: 1650px;
-  overflow: visible;
-   --people-offset: -2000px;
-}
+
 /* 파란 줄무늬 배경 (XD 기준 정확 반영) */
-.bg.bg-5 {
+.bg.bg-5{
   background-image: url("images/5.bg.png");
-  background-repeat: no-repeat; /* 🔥 중요: XD처럼 한 장 */
-  background-size: auto 1502px; /* XD W / H */
-  background-position: auto 1080px; /* XD X / Y */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
 }
 
 /* ===== STRIPES: FRAME ===== */
 
 /* 곰 전체(좌표는 XD 값으로) */
-.bear-wrap{
+/* .bear-wrap{
   position: absolute;
   left: XXpx; top: YYpx; width: WWpx; height: HHpx;
-}
+} */
 
 /* 사진 슬라이더: 곰 안쪽 */
 .bear-slider{
@@ -366,18 +366,22 @@ body {
 
 
 /* ===== 각자 위치만 XD 값으로 지정 ===== */
+
 /* JAEJUN (기존 곰 자리) */
+
+/* frames */
 .frame-jaejun{
-  top: calc(1102px + var(--people-offset));
   left: 50%;
   transform: translateX(-50%);
+  top: calc(149.76px + var(--people-up));
   width: 509.71px;
-
-  aspect-ratio: 1020 / 674;
-  height: auto;
+  height: 336.68px;
 }
+
 .dots-jaejun{
-  top: calc(1460px + var(--people-offset)); /* 곰 아래 */
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc((149.76px + var(--people-up)) + 336.68px + 18px);
 }
 
 /* 마스크 컨테이너(너가 쓰는 frame-wrap과 같은 급) */
@@ -424,78 +428,35 @@ body {
 .prev{ left: 10px; }
 .next{ right: 10px; }
 
-
-
 /* JUNTAE (예시: 너 XD 값으로 바꿔줘) */
 .frame-juntae{
-  top: calc(1540px + var(--people-offset));
   left: 50%;
   transform: translateX(-50%);
-
-  width: 520px;
-  height: 389px; /* ✅ 코알라 비율 맞춘 값 */
-}
-
-.dots-juntae{
-  top: calc(1540px + var(--people-offset) + 389px + 18px);
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-/* HYUNYEOP (예시: 너 XD 값으로 바꿔줘) */
-.frame-hyunyeop{
-  top: calc(1998px + var(--people-offset));
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 520px;
-  height: 402px; /* ✅ 520 / 1.295 ≒ 402 */
-}
-
-.dots-hyunyeop{
-  top: calc(1998px + var(--people-offset) + 402px + 18px);
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-
-
-
-.frame-bear{
-  position: absolute;
-  top: 1102px;              /* 세로는 XD 값 유지 */
-  left: 50%;                /* 가운데 기준 */
-  transform: translateX(-50%);
-  width: 509.71px;
-  height: 336.68px;
-}
-
-
-
-.bear-wrap{
-  position: absolute;
-  top: 1102px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 509.71px;
-  height: 336.68px;
-}
-
-.frame-ko{
-  position: absolute;
-  top: 1540px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: calc(597.76px + var(--people-up));
   width: 470.17px;
   height: 352.15px;
 }
 
-.frame-dog{
-  left: 139.75px;   /* XD X */
-  top: 1998.89px;    /* XD Y */
-  transform: translateX(30%);
-  width: 470.48px;  /* XD W */
-  height: 363.45px; /* XD H (이미지면 auto도 가능) */
+
+.dots-juntae{
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc((597.76px + var(--people-up)) + 352.15px + 18px);
+}
+
+/* HYUNYEOP (예시: 너 XD 값으로 바꿔줘) */
+.frame-hyunyeop{
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc(1066.65px + var(--people-up));
+  width: 470.45px;
+  height: 363.45px;
+}
+
+.dots-hyunyeop{
+  left: 50%;
+  transform: translateX(-50%);
+  top: calc((1066.65px + var(--people-up)) + 363.45px + 18px);
 }
 
 .mask-wrap{
@@ -509,44 +470,44 @@ body {
 
 /* ===== STRIPES: OBJECTS ===== */
 .st-pretzel{
-  left: 124.65px;
-  top: 558px;
-  width: 91.5px;
+  left: 120px;
+  top: 425px;
+  width: 150px;
   height: auto;
 }
 
 .st-wine{
-  left: 545px;
-  top: 545px;
-  width: 63.7px;
+  left: 530px;
+  top: 390px;
+  width: 110px;
   height: auto;
 }
 
 .st-clock{
   left: 510.17px;
-  top: 960px;
-  width: 179.85px;
+  top: 860px;
+  width: 195px;
   height: auto;
 }
 
 .st-whip{
     left: 118.21px;
-    top: 950px;
+    top: 850px;
     width: 129.33px;
     height: auto;
 }
 
 .st-cakepola{
-  left: 150px;
-    top: 1500px;
-    width: 191px;
+  left: 125px;
+    top: 1450px;
+    width: 230px;
     height: auto;
 }
 
 .st-cake{
-  left: 351.54px;
-    top: 1500px;
-    width: 280.91px;
+  left: 350.54px;
+    top: 1450px;
+    width: 310.91px;
     height: auto;
 }
 
