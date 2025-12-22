@@ -1,0 +1,590 @@
+/* =========================
+   1. Reset & Base
+========================= */
+
+/* 박스 모델 통일 */
+* {
+  box-sizing: border-box;
+}
+
+/* 기본 여백 제거 */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+/* 가로 스크롤 방지 */
+body {
+  overflow-x: hidden;
+  background: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, 
+               "Apple SD Gothic Neo", "Noto Sans KR", 
+               "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+
+/* =========================
+   2. Layout (전체 구조)
+========================= */
+
+/* 전체 페이지 폭: XD 기준 750px */
+.page {
+  width: 750px;
+  margin: 0 auto;
+}
+
+/* 모든 섹션의 기본 틀 */
+.sec {
+  position: relative;   /* absolute 기준점 */
+  width: 750px;
+  overflow: hidden;
+}
+
+
+/* =========================
+   3. Background
+========================= */
+
+/* 섹션 배경 공통 */
+.bg {
+  position: absolute;
+  inset: 0;             /* top/right/bottom/left = 0 */
+  z-index: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* =========================
+   4. Objects & Slots
+========================= */
+
+/* 이미지, 스티커, 장식용 */
+.obj {
+  position: absolute;
+  z-index: 2;
+  display: block;
+}
+
+/* 이미지 들어갈 자리(회색/검정 박스) */
+.slot {
+  position: absolute;
+  z-index: 1;
+  background: #cfcfcf;  /* 개발 중 표시용 */
+  overflow: hidden;
+  border-radius: 14px;  /* 필요 없으면 0 */
+}
+
+/* 슬롯 안 이미지 꽉 채우기 */
+.fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* =========================
+   5. Section Heights
+   (XD 구간별 높이로 수정)
+========================= */
+
+.hero      { min-height: 960px; }
+.stripes   { min-height: 1100px; }
+.collage   { min-height: 1050px; }
+.guestbook { min-height: 980px; }
+.extras    { min-height: 820px; }
+.footer    { height: 120px; }
+
+
+/* =========================
+   6. Slot Positions
+   (XD 좌표 복붙 영역)
+========================= */
+
+/* =========================
+여기서부터 
+========================= */
+
+/* 타이틀 */
+  .hero {
+  position: relative;   /* 기준점 */
+  overflow: visible;    /* 오브제 잘림 방지 */
+  height: 980px;        /* ✅ 중요: 공백 줄이기 (필요하면 조절) */
+}
+
+.hero-title {
+  position: absolute;
+  left: 100px;        /* XD X */
+  top: 0px;           /* XD Y */
+  width: 550.11px;    /* XD W */
+  height: 440.77px;   /* XD H */
+}
+
+.hero{
+  position: relative;
+  height: 980px;
+  overflow: visible;
+}
+
+.sec { position: relative; width: 750px; }
+
+/* 시즌 그리팅 버튼 */
+.season-btn {
+  position: absolute;
+  left: 339px;      /* XD X 값 */
+  top: 430.89px;       /* XD Y 값 (타이틀 아래) */
+  width: 71.47px;     /* XD W */
+  height: 19.89px;     /* 이미지 비율 유지 */
+  display: block;
+}
+
+.season-btn img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.season-btn2 img{
+  position: absolute;
+  left: 303px;      /* XD X 값 */
+  top: 450.77px;       /* XD Y 값 (타이틀 아래) */
+  width: 144.13px;     /* XD W */
+  height: 19.89px;     /* 이미지 비율 유지 */
+  display: block;
+}
+/* SLOT 1 */
+.hero {
+  position: relative;   /* 기준점 */
+ overflow: visible;
+
+}
+
+.slot-main {
+  position: absolute;
+
+  /* 중앙 정렬 핵심 공식 */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* XD 값 반영 */
+  top: 499px;          /* XD Y */
+  width: 590px;        /* XD W */
+  height: 364px;       /* XD H */
+  border-radius: 20px; /* XD Radius */
+
+  background: #cfcfcf;
+  overflow: hidden;
+}
+
+/* =========================
+   NAME OBJECTS
+========================= */
+
+.obj {
+  position: absolute;
+  z-index: 3;       /* 슬롯 위로 */
+  display: block;
+}
+
+/* JAEJUN */
+.obj-jaejun {
+ left: 90.39px; 
+ top: 469.31px; 
+ width: 60.66px;
+ height: auto;
+}
+
+/* JUNTAE */
+.obj-jt {
+ left: 512.28px; 
+ top: 835.92px; 
+ width: 60.9px;
+ height: auto;
+}
+
+/* HYUNYEOP */
+.obj-hy {
+ left: 563.53px; 
+ top: 848.33px; 
+ width: 74.03px;
+ height: auto;
+}
+
+.obj-down{
+  position: absolute;   /* obj 공통이 있어도 안전하게 */
+  left: 354px;          /* XD X */
+  top: 914px;           /* XD Y */
+  width: 43px;          /* XD W */
+  height: 93px;         /* XD H */
+  z-index: 3;           /* 슬롯 위 */
+  display: block;
+}
+
+.stripes {
+  min-height: 1650px;
+  overflow: visible;
+   --people-offset: -2000px;
+}
+/* 파란 줄무늬 배경 (XD 기준 정확 반영) */
+.bg.bg-5 {
+  background-image: url("images/5.bg.png");
+  background-repeat: no-repeat; /* 🔥 중요: XD처럼 한 장 */
+  background-size: auto 1502px; /* XD W / H */
+  background-position: auto 1080px; /* XD X / Y */
+}
+
+/* ===== STRIPES: FRAME ===== */
+
+/* 곰 전체(좌표는 XD 값으로) */
+.bear-wrap{
+  position: absolute;
+  left: XXpx; top: YYpx; width: WWpx; height: HHpx;
+}
+
+/* 사진 슬라이더: 곰 안쪽 */
+.bear-slider{
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  /* 스크롤바 숨김(선택) */
+  scrollbar-width: none;
+}
+.bear-slider::-webkit-scrollbar{ display:none; }
+
+.bear-slide{
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scroll-snap-align: start;
+  display: block;
+}
+
+/* 곰 프레임은 사진 위로 덮기 */
+.bear-frame{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none; /* 스와이프 방해 X */
+}
+
+/* ===== 마스크 박스(곰 모양 슬롯 크기) ===== */
+.masked{
+  width: 520px;           /* ← 여기만 바꾸면 곰 슬롯 크기 변경됨 */
+  aspect-ratio: 1024/665; /* mask-bear.png 비율(대략) */
+  overflow: hidden;       /* 안전 */
+}
+
+/* 사진 꽉 차게 */
+/* ===== 공용 프레임+슬라이더 ===== */
+.frame-wrap{
+  position: absolute;
+  width: 509.71px;
+  height: 336.68px;
+  z-index: 1;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.frame-slider{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.frame-slider::-webkit-scrollbar{ display:none; }
+
+.frame-slide{
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: start;
+}
+.frame-slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frame-overlay{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ===== 점 인디케이터 (공용) ===== */
+.frame-dots{
+  position: absolute;
+  display: flex;
+  gap: 8px;
+  z-index: 3;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.frame-dots .dot{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: #cfcfcf;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+.frame-dots .dot.active{
+  width: 18px;
+  border-radius: 999px;
+  background: #333;
+}
+
+
+
+/* ===== 각자 위치만 XD 값으로 지정 ===== */
+/* JAEJUN (기존 곰 자리) */
+.frame-jaejun{
+  top: calc(1102px + var(--people-offset));
+  left: 50%;
+  transform: translateX(-50%);
+  width: 509.71px;
+
+  aspect-ratio: 1020 / 674;
+  height: auto;
+}
+.dots-jaejun{
+  top: calc(1460px + var(--people-offset)); /* 곰 아래 */
+}
+
+/* 마스크 컨테이너(너가 쓰는 frame-wrap과 같은 급) */
+.mask-wrap{
+  position: absolute;
+  width: 509.71px;
+  height: 336.68px;
+  overflow: hidden;
+  border-radius: 20px;
+  z-index: 2;
+}
+
+/* SVG는 박스에 꽉 차게 */
+.mask-svg{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* 프레임 덮기 */
+.mask-frame{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.simple-slider{ position: relative; }
+
+.prev, .next{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  border: none;
+  background: rgba(0,0,0,.4);
+  color: #fff;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.prev{ left: 10px; }
+.next{ right: 10px; }
+
+
+
+/* JUNTAE (예시: 너 XD 값으로 바꿔줘) */
+.frame-juntae{
+  top: calc(1540px + var(--people-offset));
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 520px;
+  height: 389px; /* ✅ 코알라 비율 맞춘 값 */
+}
+
+.dots-juntae{
+  top: calc(1540px + var(--people-offset) + 389px + 18px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* HYUNYEOP (예시: 너 XD 값으로 바꿔줘) */
+.frame-hyunyeop{
+  top: calc(1998px + var(--people-offset));
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 520px;
+  height: 402px; /* ✅ 520 / 1.295 ≒ 402 */
+}
+
+.dots-hyunyeop{
+  top: calc(1998px + var(--people-offset) + 402px + 18px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
+
+
+.frame-bear{
+  position: absolute;
+  top: 1102px;              /* 세로는 XD 값 유지 */
+  left: 50%;                /* 가운데 기준 */
+  transform: translateX(-50%);
+  width: 509.71px;
+  height: 336.68px;
+}
+
+
+
+.bear-wrap{
+  position: absolute;
+  top: 1102px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 509.71px;
+  height: 336.68px;
+}
+
+.frame-ko{
+  position: absolute;
+  top: 1540px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 470.17px;
+  height: 352.15px;
+}
+
+.frame-dog{
+  left: 139.75px;   /* XD X */
+  top: 1998.89px;    /* XD Y */
+  transform: translateX(30%);
+  width: 470.48px;  /* XD W */
+  height: 363.45px; /* XD H (이미지면 auto도 가능) */
+}
+
+.mask-wrap{
+  touch-action: pan-y; /* 세로 스크롤 유지 + 가로 스와이프 감지 */
+  user-select: none;
+}
+.mask-wrap img, .mask-wrap svg{
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ===== STRIPES: OBJECTS ===== */
+.st-pretzel{
+  left: 124.65px;
+  top: 558px;
+  width: 91.5px;
+  height: auto;
+}
+
+.st-wine{
+  left: 545px;
+  top: 545px;
+  width: 63.7px;
+  height: auto;
+}
+
+.st-clock{
+  left: 510.17px;
+  top: 960px;
+  width: 179.85px;
+  height: auto;
+}
+
+.st-whip{
+    left: 118.21px;
+    top: 950px;
+    width: 129.33px;
+    height: auto;
+}
+
+.st-cakepola{
+  left: 150px;
+    top: 1500px;
+    width: 191px;
+    height: auto;
+}
+
+.st-cake{
+  left: 351.54px;
+    top: 1500px;
+    width: 280.91px;
+    height: auto;
+}
+
+
+
+
+/* SLOT 2 (콜라주 3개) */
+.slot-2-1 { left: 160px; top: 120px; width: 430px; height: 260px; }
+.slot-2-2 { left: 160px; top: 400px; width: 430px; height: 260px; }
+.slot-2-3 { left: 160px; top: 680px; width: 430px; height: 260px; }
+
+/* SLOT 3 (방명록 3개) */
+.slot-3-1 { left: 110px; top: 60px;  width: 230px; height: 260px; }
+.slot-3-2 { left: 410px; top: 240px; width: 230px; height: 260px; }
+.slot-3-3 { left: 110px; top: 460px; width: 230px; height: 260px; }
+
+/* SLOT 4 (하단 추가 3개) */
+.slot-4-1 { left: 110px; top: 60px;  width: 230px; height: 260px; }
+.slot-4-2 { left: 410px; top: 240px; width: 230px; height: 260px; }
+.slot-4-3 { left: 110px; top: 460px; width: 230px; height: 260px; }
+
+
+/* =========================
+   7. Footer
+========================= */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-text {
+  font-size: 12px;
+  color: #777;
+  margin: 0;
+}
+
+
+
+.fill {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
