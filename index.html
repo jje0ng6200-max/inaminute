@@ -3,8 +3,31 @@
 <head>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+ <meta id="viewport" name="viewport" content="width=750, initial-scale=1.0" />
   <title>Minute by Minute</title>
+  <script>
+  (function () {
+    const BASE_WIDTH = 750;
+    const meta = document.querySelector('#viewport');
+    if (!meta) return;
+
+    function setScale() {
+      const deviceWidth = Math.min(window.innerWidth, window.screen.width || window.innerWidth);
+      const scale = deviceWidth / BASE_WIDTH;
+
+      // 고정 스케일로 잠가서 "확대/넘침" 방지
+      meta.setAttribute(
+        'content',
+        `width=${BASE_WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no, viewport-fit=cover`
+      );
+    }
+
+    setScale();
+    window.addEventListener('resize', setScale);
+    window.addEventListener('orientationchange', setScale);
+  })();
+</script>
+
 </head>
 <body>
   <main class="page">
