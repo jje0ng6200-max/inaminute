@@ -31,7 +31,7 @@ body {
   width: 750px;
   transform-origin: top left;
   transform: scale(calc(100vw / 750));
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
 }
@@ -49,7 +49,7 @@ body {
 /* 전체 페이지 폭: XD 기준 750px */
 /* 기준 레이아웃 */
 .page{
-  width: 930px;
+  width: 750px;
   margin: 0 auto;
 }
 
