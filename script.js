@@ -1,8 +1,3 @@
-// ============================
-// Masked photo slider (dots + swipe)
-// ============================
-
-// SVG <image> href 안전 교체
 function setSvgImageHref(svgImageEl, src) {
   svgImageEl.setAttribute("href", src);
   svgImageEl.setAttributeNS(
@@ -25,7 +20,6 @@ function initMaskedSlider(dotsWrap) {
   let index = Math.max(0, dots.findIndex(d => d.classList.contains("active")));
   if (index === -1) index = 0;
 
-  // ⭐️ 핵심: 사진 교체 + 사진만 이동
   function goTo(i) {
     index = (i + dots.length) % dots.length;
 
@@ -43,21 +37,17 @@ if (src) setSvgImageHref(photoEl, src);
 const baseX = Number(photoEl.dataset.baseX || photoEl.getAttribute("x") || 0);
 const baseY = Number(photoEl.dataset.baseY || photoEl.getAttribute("y") || 0);
 
-// ✅ 사진만 이동 (프레임/마스크/버튼 고정)
 requestAnimationFrame(() => {
   photoEl.setAttribute("x", baseX + dx);
   photoEl.setAttribute("y", baseY + dy);
 });
   }
   
-
-  // dot 클릭
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => goTo(i));
   });
 
-  // ===== 스와이프 (프레임 기준) =====
-  const frame = dotsWrap.previousElementSibling; // .mask-wrap
+  const frame = dotsWrap.previousElementSibling;
   if (frame) {
     let startX = 0;
     let startY = 0;
@@ -88,13 +78,8 @@ requestAnimationFrame(() => {
     }, { passive: true });
   }
 
-  // 초기 1회 적용
   goTo(index);
 }
-
-// ============================
-// Message image stack
-// ============================
 
 function initMessageStack(stack) {
   const cards = Array.from(stack.querySelectorAll(".msg-card1"));
@@ -140,10 +125,6 @@ function initMessageStack(stack) {
   render();
 }
 
-// ============================
-// Collage slider
-// ============================
-
 function initCollageSlider(slider) {
   const slides = Array.from(slider.querySelectorAll(".collage-slide"));
   const dots = Array.from(slider.querySelectorAll(".collage-dots .dot"));
@@ -155,11 +136,10 @@ function initCollageSlider(slider) {
   slides.forEach(s => s.classList.remove("active"));
   dots.forEach(d => d.classList.remove("active"));
 
-  const active = slides[idx];          // ✅ 이 줄이 핵심
+  const active = slides[idx];       
   active.classList.add("active");
   if (dots[idx]) dots[idx].classList.add("active");
 
-  // ✅ 이미지(슬라이드)만 위치 조정
   const pos = active.dataset.pos;
   active.style.objectPosition = pos ? pos : "50% 50%";
 }
@@ -189,10 +169,6 @@ function initCollageSlider(slider) {
 
   render();
 }
-
-// ============================
-// Init all
-// ============================
 
 window.addEventListener("DOMContentLoaded", () => {
   document
