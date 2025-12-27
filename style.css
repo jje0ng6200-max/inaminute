@@ -624,7 +624,7 @@ body {
   z-index: 7;
 }
 
-.davinchi315{
+.code315{
   position: absolute;
   left: 129px;   
   top: 1283.7px;    
@@ -803,14 +803,6 @@ body {
   margin: 0;
 }
 
-
-
-.fill {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
 
 .collage-slider img,
 .collage-slider .collage-slide {

@@ -7,7 +7,7 @@ function setSvgImageHref(svgImageEl, src) {
   );
 }
 
-function initMaskedSlider(dotsWrap) {
+function initMaskedSlider(dotsWrap, viewer) {
   const targetId = dotsWrap.dataset.target;
   if (!targetId) return;
 
@@ -26,21 +26,21 @@ function initMaskedSlider(dotsWrap) {
     dots.forEach(d => d.classList.remove("active"));
     dots[index].classList.add("active");
 
-   const dot = dots[index];
-const src = dot.dataset.src;
+    const dot = dots[index];
+    const src = dot.dataset.src;
 
-const dx = Number(dot.dataset.x || 0);
-const dy = Number(dot.dataset.y || 0);
+    const dx = Number(dot.dataset.x || 0);
+    const dy = Number(dot.dataset.y || 0);
 
-if (src) setSvgImageHref(photoEl, src);
+    if (src) setSvgImageHref(photoEl, src);
 
-const baseX = Number(photoEl.dataset.baseX || photoEl.getAttribute("x") || 0);
-const baseY = Number(photoEl.dataset.baseY || photoEl.getAttribute("y") || 0);
+    const baseX = Number(photoEl.dataset.baseX || photoEl.getAttribute("x") || 0);
+    const baseY = Number(photoEl.dataset.baseY || photoEl.getAttribute("y") || 0);
 
-requestAnimationFrame(() => {
-  photoEl.setAttribute("x", baseX + dx);
-  photoEl.setAttribute("y", baseY + dy);
-});
+    requestAnimationFrame(() => {
+      photoEl.setAttribute("x", baseX + dx);
+      photoEl.setAttribute("y", baseY + dy);
+    });
   }
   
   dots.forEach((dot, i) => {
@@ -77,11 +77,12 @@ requestAnimationFrame(() => {
       else goTo(index - 1);
     }, { passive: true });
     
-     frame.addEventListener("click", () => {
+    // ✅ 프레임 탭하면: iOS는 오버레이(img)로 띄워서 "사진 앱에 저장" 뜨게
+    frame.addEventListener("click", () => {
       const src = dots[index]?.dataset?.src;
       if (!src) return;
 
-      if (viewer && viewer.open) viewer.open(src);
+      if (viewer && typeof viewer.open === "function") viewer.open(src);
       else window.open(src, "_blank");
     });
   }
@@ -141,16 +142,16 @@ function initCollageSlider(slider) {
   let idx = 0;
 
   function render() {
-  slides.forEach(s => s.classList.remove("active"));
-  dots.forEach(d => d.classList.remove("active"));
+    slides.forEach(s => s.classList.remove("active"));
+    dots.forEach(d => d.classList.remove("active"));
 
-  const active = slides[idx];       
-  active.classList.add("active");
-  if (dots[idx]) dots[idx].classList.add("active");
+    const active = slides[idx];       
+    active.classList.add("active");
+    if (dots[idx]) dots[idx].classList.add("active");
 
-  const pos = active.dataset.pos;
-  active.style.objectPosition = pos ? pos : "50% 50%";
-}
+    const pos = active.dataset.pos;
+    active.style.objectPosition = pos ? pos : "50% 50%";
+  }
 
   dots.forEach((dot, i) => {
     dot.addEventListener("click", () => {
@@ -182,6 +183,9 @@ function initPhotoViewer() {
   const viewer = document.getElementById("photo-viewer");
   const img = document.getElementById("photo-viewer-img");
   if (!viewer || !img) return null;
+
+  // ✅ 이미지 위 터치는 닫힘(버블링) 방지: iOS 롱프레스 저장 안정화
+  img.addEventListener("click", (e) => e.stopPropagation());
 
   function open(src) {
     img.src = src;
@@ -217,4 +221,3 @@ window.addEventListener("DOMContentLoaded", () => {
     .querySelectorAll("[data-slider]")
     .forEach(initCollageSlider);
 });
-
