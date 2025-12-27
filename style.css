@@ -821,3 +821,30 @@ body {
   user-drag: auto;
   pointer-events: auto;
 }
+
+.photo-viewer{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.85);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 18px;
+}
+
+.photo-viewer.is-open{
+  display: flex;
+}
+
+.photo-viewer img{
+  max-width: 92vw;
+  max-height: 92vh;
+  object-fit: contain;
+
+  -webkit-touch-callout: default;
+  -webkit-user-select: auto;
+  user-select: auto;
+  -webkit-user-drag: auto;
+  pointer-events: auto;
+}
