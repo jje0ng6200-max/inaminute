@@ -184,7 +184,6 @@ function initPhotoViewer() {
   const img = document.getElementById("photo-viewer-img");
   if (!viewer || !img) return null;
 
-  // ✅ 이미지 위 터치는 닫힘(버블링) 방지: iOS 롱프레스 저장 안정화
   img.addEventListener("click", (e) => e.stopPropagation());
 
   function open(src) {
@@ -199,7 +198,6 @@ function initPhotoViewer() {
     img.removeAttribute("src");
   }
 
-  // 배경 탭하면 닫기
   viewer.addEventListener("click", close);
 
   return { open, close };
