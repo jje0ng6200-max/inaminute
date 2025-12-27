@@ -76,7 +76,14 @@ requestAnimationFrame(() => {
       if (dx < 0) goTo(index + 1);
       else goTo(index - 1);
     }, { passive: true });
+     frame.addEventListener("click", () => {
+    const src = dots[index]?.dataset?.src;
+    if (!src) return;
+    window.open(src, "_blank");
+  });
   }
+
+  
 
   goTo(index);
 }
