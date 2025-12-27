@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Minute by Minute</title>
+  <script>
+  (function () {
+    const BASE_WIDTH = 750;
+    const meta = document.querySelector('#viewport');
+    if (!meta) return;
+
+    function setScale() {
+      const deviceWidth = Math.min(window.innerWidth, window.screen.width || window.innerWidth);
+      const scale = deviceWidth / BASE_WIDTH;
+
+      meta.setAttribute(
+        'content',
+        `width=${BASE_WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}, user-scalable=no, viewport-fit=cover`
+      );
+    }
+
+    setScale();
+    window.addEventListener('resize', setScale);
+    window.addEventListener('orientationchange', setScale);
+  })();
+</script>
+
+</head>
+<body>
+  <div id="stage-wrap">
+  <div id="stage">
+  <main class="page">
+ <section class="sec hero">
+
+  <img class="hero-title" src="images/title.png" alt="Minute by Minute">
+
+  <a href="#" class="season-btn">
+    <img src="images/title1.png" alt="IN A MINUTE">
+  </a>
+
+  <a href="#" class="season-btn2">
+    <img src="images/title2.png" alt="2026 SEASON'S GREETING">
+  </a>
+
+  <div class="slot slot-main">
+    <img class="fill" src="images/slot11.jpg" alt="">
+  </div>
+
+  <img class="obj obj-jaejun" src="images/obj-jaejun.png" alt="JAEJUN">
+  <img class="obj obj-jt" src="images/obj-jt.png" alt="JUNTAE">
+  <img class="obj obj-hy" src="images/obj-hy.png" alt="HYUNYEOP">
+ 
+<img class="obj obj-down" src="images/obj-down.png" alt="">
+
+</section>
+
+    <section class="sec stripes">
+      <div class="bg bg-5">
+        <p class="slide-guide">
+  이미지를 슬라이드하시면 더 많은 이미지를 확인하실 수 있습니다.
+</p>
+      </div>
+
+<div class="bear-wrap">
+
+  <!-- ===== JAEJUN ===== -->
+<div class="mask-wrap frame-jaejun">
+  <svg class="mask-svg" viewBox="0 0 1020 674">
+
+    <defs>
+      <mask id="bearMask-jaejun">
+        <image href="images/mask-bear.png" width="1020" height="674" />
+      </mask>
+    </defs>
+
+   <image
+  id="photo-jaejun"
+  href="images/jj1.jpg"
+  x="-128"
+  y="-50"
+  width="1377"
+  height="1377"
+  data-base-x="-128"
+  data-base-y="-90"
+  preserveAspectRatio="xMidYMid slice"
+  mask="url(#bearMask-jaejun)"
+/>
+
+  </svg>
+</div>
+
+  <img class="mask-frame" src="images/frame-bear.png" alt="">
+</div>
+
+<div class="frame-dots dots-jaejun" data-target="photo-jaejun">
+
+  <button class="dot active"
+    data-src="images/jj1.jpg"
+    data-x="-115"
+    data-y="-140">
+  </button>
+
+  <button class="dot"
+    data-src="images/jj2.jpg"
+    data-x="-40"
+    data-y="-75"
+    data-scale="0.9">
+  </button>
+
+  <button class="dot"
+    data-src="images/jj3.jpg"
+    data-x="20"
+    data-y="-40"
+    data-scale="0.9">
+  </button>
+
+    <button class="dot"
+    data-src="images/jj4.jpg"
+    data-x="20"
+    data-y="-80"
+    data-scale="0.8">
+  </button>
+</div>
+
+
+ <!-- ===== JUNTAE ===== -->
+<div class="mask-wrap frame-juntae">
+  <svg class="mask-svg" viewBox="0 0 941 705">
+    <defs>
+      <mask id="koMask-juntae">
+        <image href="images/mask-ko.png" width="941" height="705" />
+      </mask>
+    </defs>
+
+    <image
+      id="photo-juntae"
+      href="images/jt1.jpg"
+      x="-128"
+      y="-85"
+      width="1377"
+      height="1377"
+      data-base-x="-128"
+      data-base-y="-85"
+      data-scale="0.9"
+      preserveAspectRatio="xMidYMid slice"
+      mask="url(#koMask-juntae)"
+    />
+  </svg>
+</div>
+
+<div class="frame-dots dots-juntae" data-target="photo-juntae">
+  <button class="dot active" data-src="images/jt1.jpg" data-x="-30" data-y="-140"></button>
+  <button class="dot" data-src="images/jt2.jpg" data-x="-50" data-y="-120"></button>
+  <button class="dot" data-src="images/jt3.jpg" data-x="-140" data-y="-50"></button>
+  <button class="dot" data-src="images/jt4.jpg" data-x="-30" data-y="-40"></button>
+</div>
+
+<!-- ===== HYUNYEOP ===== -->
+<div class="mask-wrap frame-hyunyeop">
+  <svg class="mask-svg" viewBox="0 0 941 727">
+    <defs>
+      <mask id="dogMask-hyunyeop">
+        <image href="images/mask-dog.png" width="941" height="727" />
+      </mask>
+    </defs>
+
+    <image
+      id="photo-hyunyeop"
+      href="images/hy1.jpg"
+      x="-128"
+      y="-85"
+      width="1377"
+      height="1377"
+      data-base-x="-128"
+      data-base-y="-85"
+      preserveAspectRatio="xMidYMid slice"
+      mask="url(#dogMask-hyunyeop)"
+    />
+  </svg>
+</div>
+
+<div class="frame-dots dots-hyunyeop" data-target="photo-hyunyeop">
+  <button class="dot active" data-src="images/hy1.jpg" data-x="-200" data-y="-80"></button>
+  <button class="dot" data-src="images/hy2.jpg" data-x="-15" data-y="-80"></button>
+  <button class="dot" data-src="images/hy3.jpg" data-x="20" data-y="-80" data-scale="0.5"></button>
+  <button class="dot" data-src="images/hy4.jpg" data-x="-50" data-y="-80"></button>
+</div>
+
+  <img class="obj st-pretzel" src="images/obj-pretzel.png" alt="">
+  <img class="obj st-wine" src="images/obj-wine.png" alt="">
+  <img class="obj st-clock" src="images/obj-clock.png" alt="">
+  <img class="obj st-whip" src="images/obj-whip.png" alt="">
+  <img class="obj st-cakepola" src="images/cake-pola.png">
+  <img class="obj st-cake" src="images/cake-li.png">
+    </section>
+
+    <section class="sec collage">
+      <div class="bg bg-6"></div>
+    
+      <div class="slot slot-2-1 collage-slider" data-slider>
+  <div class="collage-track">
+    <img src="images/slot2-1-1.jpg" class="collage-slide active" data-pos="50% 45%">
+    <img src="images/slot2-1-2.jpg" class="collage-slide" data-pos="35% 50%">
+    <img src="images/slot2-1-3.jpg" class="collage-slide" data-pos="60% 55%">
+    <img src="images/slot2-1-4.jpg" class="collage-slide" data-pos="50% 24%">
+  </div>
+
+  <div class="collage-dots">
+    <button class="dot active"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+  </div>
+</div>
+
+  <div class="slot slot-2-2 collage-slider" data-slider>
+  <div class="collage-track">
+    <img src="images/slot2-2-1.jpg" class="collage-slide active" data-pos="50% 54%">
+    <img src="images/slot2-2-2.jpg" class="collage-slide" data-pos="50% 30%">
+    <img src="images/slot2-2-3.jpg" class="collage-slide" data-pos="50% 40%">
+    <img src="images/slot2-2-4.jpg" class="collage-slide" data-pos="38% 40%" data-scale="0.4">
+  </div>
+
+  <div class="collage-dots">
+    <button class="dot active"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+  </div>
+</div>
+
+  <div class="slot slot-2-3 collage-slider" data-slider>
+  <div class="collage-track">
+    <img src="images/slot2-3-1.jpg" class="collage-slide active" data-pos="50% 43%">
+    <img src="images/slot2-3-2.jpg" class="collage-slide" data-pos="50% 40%">
+    <img src="images/slot2-3-3.jpg" class="collage-slide" data-pos="50% 40%">
+    <img src="images/slot2-3-4.jpg" class="collage-slide" data-pos="50% 30%">
+  </div>
+
+  <div class="collage-dots">
+    <button class="dot active"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+    <button class="dot"></button>
+  </div>
+</div>
+
+      
+     <img src="images/obj-gamebell.png" class="obj obj-gamebell" />
+      <img src="images/cardjt.png" class="obj cardjt" />
+      <img src="images/cardjj.png" class="obj cardjj" />
+      <img src="images/cardhy.png" class="obj cardhy" />
+      <img src="images/dice3.png" class="obj dice3" />
+      <img src="images/dice1.png" class="obj dice1" />
+      <img src="images/dice5.png" class="obj dice5" />
+      <img src="images/code315.png" class="obj code315" />
+      <img src="images/gamebroad-pola.png" class="obj gamebroad-pola" />
+    </section>
+
+
+<section class="sec message">
+  <div class="bg bg-message"></div>
+
+ <div class="message-avatar">
+  <div class="message-photo" style="background-image:url('images/msg-iam1.jpg')"></div>
+  <img class="message-frame" src="images/message-frame.png" alt="">
+</div>
+
+  <img class="message-inaminute" src="images/message-inaminute.png" alt="In A Minute">
+   
+<div class="message-strip strip-1">
+  <div class="strip-stack" data-stack>
+    <div class="msg-card1"><img class="fill" src="images/msg-jj1.jpg" alt=""></div>
+    <div class="msg-card1"><img class="fill" src="images/msg-jj2.jpg" alt=""></div>
+    <div class="msg-card1"><img class="fill" src="images/msg-jj3.jpg" alt=""></div>
+  </div>
+</div>
+
+<div class="message-strip strip-2">
+  <div class="strip-stack" data-stack>
+    <div class="msg-card1"><img class="fill" src="images/msg-jt1.jpg" alt=""></div>
+    <div class="msg-card1"><img class="fill" src="images/msg-jt2.jpg" alt=""></div>
+    <div class="msg-card1"><img class="fill" src="images/msg-jt3.jpg" alt=""></div>
+  </div>
+</div>
+
+<div class="message-strip strip-3">
+  <div class="strip-stack" data-stack>
+    <div class="msg-card1"><img class="fill" src="images/msg-hy1.jpg" alt=""></div>
+    <div class="msg-card1"><img class="fill" src="images/msg-hy2.jpg" alt=""></div>
+    <div class="msg-card1"><img class="fill" src="images/msg-hy3.jpg" alt=""></div>
+  </div>
+</div>
+
+      <img class="msg-bubble b1" src="images/msg-jj.png" alt="">
+      <img class="msg-bubble b2" src="images/msg-jt.png" alt="">
+      <img class="msg-bubble b3" src="images/msg-hy.png" alt="">
+      <img class="msg-bubble b4" src="images/bed-pola.png" alt="">
+        </section>
+      
+    <section class="sec extras">
+      
+    </section>
+
+    <footer class="sec footer">
+      <p class="footer-text">© MOM Entertainment Co., Ltd. All rights reserved.
+       <br>해당 홈페이지는 2026년 03월 07일까지 기간제로 운영됩니다.
+      </p>
+      
+    </footer>
+
+    <div id="photo-viewer" class="photo-viewer" aria-hidden="true">
+      <img id="photo-viewer-img" alt="photo preview">
+    </div>
+
+  </main>
+  </div>
+  </div>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>
