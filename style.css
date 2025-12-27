@@ -531,11 +531,14 @@ body {
   object-fit: cover;
 
   opacity: 0;
+  pointer-events: none;
   transition: opacity .30s ease;
 }
 
 .collage-slide.active{
   opacity: 1;
+  pointer-events: auto;
+  z-index: 1;
 }
 
 
