@@ -76,14 +76,15 @@ requestAnimationFrame(() => {
       if (dx < 0) goTo(index + 1);
       else goTo(index - 1);
     }, { passive: true });
+    
      frame.addEventListener("click", () => {
-    const src = dots[index]?.dataset?.src;
-    if (!src) return;
-    window.open(src, "_blank");
-  });
-  }
+      const src = dots[index]?.dataset?.src;
+      if (!src) return;
 
-  
+      if (viewer && viewer.open) viewer.open(src);
+      else window.open(src, "_blank");
+    });
+  }
 
   goTo(index);
 }
@@ -177,10 +178,36 @@ function initCollageSlider(slider) {
   render();
 }
 
+function initPhotoViewer() {
+  const viewer = document.getElementById("photo-viewer");
+  const img = document.getElementById("photo-viewer-img");
+  if (!viewer || !img) return null;
+
+  function open(src) {
+    img.src = src;
+    viewer.classList.add("is-open");
+    viewer.setAttribute("aria-hidden", "false");
+  }
+
+  function close() {
+    viewer.classList.remove("is-open");
+    viewer.setAttribute("aria-hidden", "true");
+    img.removeAttribute("src");
+  }
+
+  // 배경 탭하면 닫기
+  viewer.addEventListener("click", close);
+
+  return { open, close };
+}
+
+
 window.addEventListener("DOMContentLoaded", () => {
+  const viewer = initPhotoViewer();
+
   document
     .querySelectorAll(".frame-dots[data-target]")
-    .forEach(initMaskedSlider);
+    .forEach((wrap) => initMaskedSlider(wrap, viewer));
 
   document
     .querySelectorAll(".strip-stack")
@@ -190,3 +217,4 @@ window.addEventListener("DOMContentLoaded", () => {
     .querySelectorAll("[data-slider]")
     .forEach(initCollageSlider);
 });
+
